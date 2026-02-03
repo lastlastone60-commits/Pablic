@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>My Page</title>
+</head>
+<body>
+
+<h2>Hello 👋</h2>
+<p>Tap the button to allow camera.</p>
+
+<button onclick="openCamera()">Open Camera</button>
+
+<script>
+function openCamera() {
+  navigator.mediaDevices.getUserMedia({ video: true })
+    .then(stream => {
+      alert("Camera allowed 👍");
+      stream.getTracks().forEach(track => track.stop());
+    })
+    .catch(() => {
+      alert("Camera denied ❌");
+    });
+}
+</script>
+
+</body>
+</html>
